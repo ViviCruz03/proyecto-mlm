@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+    .card_inicio{
+        background-color: white;
+        border-radius: 15px;
+        padding: 80px;
+        text-align: center;
+        max-width: 900px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border: 3px solid #4a80d6;
+        position: relative;
+    }
+</style>
+<div>
+    <main class="container py-5">
+        <section class="card_inicio">
+            <img src="{% static 'img/Logo-1.png' %}" alt="Mappit Logo" class="logo"> 
+            <h1 class="fw-bold text-center">BIENVENIDO</h1>
+            <p class="text-center">¡Identifica y gestiona clientes o prospectos de forma sencilla y rápida!</p>
+            <div class="text-center">
+                <a class="btn btn btn-primary btn-lg" href="/login/">Ingresar</a>
+            </div>
+        </section>
+    </main> 
+</div>
+{% endblock %}
