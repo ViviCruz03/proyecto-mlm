@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 #Biblioteca de django que permite crear una coockie para la sesión del usuario
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+from .models import Estado  # Importar el modelo para los estados
+
 
 
 
@@ -36,3 +38,5 @@ def salir(request):
 def accion(request):
     return render(request, 'accion.html')
 
+def filtradoA(request):
+    return render(request, 'busqFiltrado.html',{'estados': Estado.ESTADOS})

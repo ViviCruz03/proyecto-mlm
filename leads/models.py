@@ -15,6 +15,41 @@ tipos = [
     ('4','Cuenta ganada'),
     ('5','Descartado')
 ]
+class Estado(models.Model):
+    ESTADOS = [
+    ('AGS', 'Aguascalientes'),
+    ('BC', 'Baja California'),
+    ('BCS', 'Baja California Sur'),
+    ('CAM', 'Campeche'),
+    ('COAH', 'Coahuila'),
+    ('COL', 'Colima'),
+    ('CHP', 'Chiapas'),
+    ('CHIH', 'Chihuahua'),
+    ('CDMX', 'Ciudad de México'),
+    ('DGO', 'Durango'),
+    ('GTO', 'Guanajuato'),
+    ('GRO', 'Guerrero'),
+    ('HGO', 'Hidalgo'),
+    ('JAL', 'Jalisco'),
+    ('MEX', 'México'),
+    ('MICH', 'Michoacán'),
+    ('MOR', 'Morelos'),
+    ('NAY', 'Nayarit'),
+    ('NL', 'Nuevo León'),
+    ('OAX', 'Oaxaca'),
+    ('PUE', 'Puebla'),
+    ('QRO', 'Querétaro'),
+    ('QROO', 'Quintana Roo'),
+    ('SLP', 'San Luis Potosí'),
+    ('SIN', 'Sinaloa'),
+    ('SON', 'Sonora'),
+    ('TAB', 'Tabasco'),
+    ('TAMPS', 'Tamaulipas'),
+    ('TLAX', 'Tlaxcala'),
+    ('VER', 'Veracruz'),
+    ('YUC', 'Yucatán'),
+    ('ZAC', 'Zacatecas')
+]
 
 #Tabla Empresa
 class Empresa(models.Model):
