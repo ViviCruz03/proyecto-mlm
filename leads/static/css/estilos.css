@@ -5,21 +5,22 @@ body{
 
 /* IMAGENES */
 
-.logo {
+.logo{
     max-width: 150px;
     margin-bottom: 20px;
     align-items: center;
+    text-align: center;
 }
 .ilus{
     display: flex;
-    align-items: center;
     max-width: 500px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 /* PANTALLA INICIO */
 
-.card_inicio {
+.card_inicio{
     background-color: white;
     border-radius: 25px;
     padding: 80px;
@@ -37,16 +38,18 @@ body{
 /* PANTALLA LOGIN */
 
 .card_login{
-    justify-content: center;
     background-color: white;
     border-radius: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px;
-    max-width: 600px;
+    padding: 80px;
+    text-align: center;
+    max-width: 900px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     border: 3px solid #4a80d6;
+    margin: 0 auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* PANTALLA FILTRADO ASESOR */
@@ -62,7 +65,7 @@ body{
 
 
 /* PANTALLA ACCION */
-.accion_container{
+.accion_container1{
     flex-grow: 1;
     background-color: white;
     border-radius: 25px;
@@ -70,17 +73,39 @@ body{
     margin: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     border: 3px solid #4a80d6;
-
+}
+.accion_container2 {
+    display: flex;
+    gap: 20px; /* Espacio entre tarjetas */
 }
 
-.con_accion{
-    background-color: #4a80d6;
-    border-radius: 25px;
-    display: flex;
-    padding: 40px;
-    margin: 20px;
-    max-width: 200px;
+.card_a {
+    background-color: #2D5FBB;
+    color: white;
     text-align: center;
-    border: white;
-    
+    padding: 20px;
+    width: 180px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.iconac {
+    width: 30px; /* Ajusta el tamaño del icono */
+}
+
+.btnconac {
+    background-color: white;
+    color: #2e5ab3;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.card button:hover {
+    background-color: #d9d9d9;
 }

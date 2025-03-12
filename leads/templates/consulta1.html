@@ -5,7 +5,7 @@
 {% block content %}
 <div class="asesorF-container">
     <div class="d-flex justify-content-between align-items-center">
-        <h4>BÚSQUEDA DE CLIENTES</h4>
+        <h3>BÚSQUEDA DE CLIENTES</h3>
         <img src="{% static 'img/Logo-1.png' %}" alt="Mappit Logo" width="100">
     </div>
 
@@ -38,11 +38,13 @@
             </select>
         </div>
     </div>
-
+    <br><br><br>
+    <br><br><br>
     <div class="mt-4 d-flex justify-content-end">
-        <button class="btn btn-danger">CANCELAR</button>
+        <button class="btn btn-danger" onclick="window.location.href='{% url 'accion' %}'" >CANCELAR</button><br>
         <button class="btn btn-primary">CONSULTAR</button>
     </div>
+    
 </div>
 
 {% endblock %}

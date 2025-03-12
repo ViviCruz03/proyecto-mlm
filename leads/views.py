@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .models import Estado  # Importar el modelo para los estados
-
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -30,13 +30,24 @@ def signin (request):
         else:
             login(request, user)
             return redirect('accion')
-        
+
+@login_required        
 def salir(request):
     logout(request)
     return redirect('index')
         
+@login_required
 def accion(request):
     return render(request, 'accion.html')
 
-def filtradoA(request):
-    return render(request, 'busqFiltrado.html',{'estados': Estado.ESTADOS})
+@login_required
+def crearConsulta(request):
+    return render(request, 'consulta1.html',{'estados': Estado.ESTADOS})
+
+@login_required
+def segConsulta(request):
+    return render(request, 'seguimiento1.html')
+
+@login_required
+def dash(request):
+    return render(request, 'dash.html')
