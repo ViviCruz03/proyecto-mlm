@@ -72,3 +72,15 @@ body{
     border: 3px solid #4a80d6;
 
 }
+
+.con_accion{
+    background-color: #4a80d6;
+    border-radius: 25px;
+    display: flex;
+    padding: 40px;
+    margin: 20px;
+    max-width: 200px;
+    text-align: center;
+    border: white;
+    
+}
