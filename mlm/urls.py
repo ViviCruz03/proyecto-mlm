@@ -22,10 +22,12 @@ from leads import views
 urlpatterns = [
     path('', include('leads.urls')),
     path('admin/', admin.site.urls),
-    path('/', views.home, name='home'),
+    path('', views.home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('login/', views.signin, name='login'),
     path('salir/', views.salir, name='salir'),
     path('accion/', views.accion, name='accion'),
-    path('filtradoA/',views.filtradoA, name='filtradoA')
+    path('crearConsulta/',views.crearConsulta, name='crear_consulta'),
+    path('segConsulta/',views.segConsulta, name='seg_consulta' ),
+    path('dash/', views.dash, name='dash')
     ]
