@@ -28,6 +28,7 @@ urlpatterns = [
     path('salir/', views.salir, name='salir'),
     path('accion/', views.accion, name='accion'),
     path('crearConsulta/',views.crearConsulta, name='crear_consulta'),
+    path('consulta2/', views.consulta2,name='consulta2'),
     path('segConsulta/',views.segConsulta, name='seg_consulta' ),
     path('dash/', views.dash, name='dash')
     ]

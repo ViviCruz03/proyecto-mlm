@@ -4,7 +4,83 @@
 
 {% block content %}
 
-<h2>Resultados de la busqueda</h2>
+<div class="accion_container1">
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>RESULTADOS DE BÚSQUEDA</h3>
+        <img src="{% static 'img/Logo-1.png' %}" alt="Mappit Logo" width="100">
+    </div>
+    <br>
+    <div>
+        <p class="fw-medium">
+            Buscando: {traer la condicion} <br>
+            En: {traer el estado, el municipio y la localidad}
+
+        </p>
+    </div>
+    <table class="rwd-table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE DE LA UNIDAD</th>
+            <th scope="col">RAZÓN SOCIAL</th>
+            <th scope="col">CLASE DE ACT</th>
+            <th scope="col">DESCRIP</th>
+            <th scope="col">VIALIDAD</th>
+            <th scope="col">N°</th>
+            <th scope="col">LETRA</th>
+            <th scope="col">ASENTAMIENTO</th>
+            <th scope="col">CP</th>
+            <th scope="col">ESTADO</th>
+            <th scope="col">MUNICIPIO</th>
+            <th scope="col">LOCALIDAD</th>
+            <th scope="col">TELEF</th>
+            <th scope="col">CORREO</th>
+            <th scope="col">SITIO WEB</th>
+            <th scope="col">LATITUD</th>
+            <th scope="col">LONGITUD</th>
+            <th scope="col">FECHA</th>
+            <th scope="col">STATUS</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr>
+            <td class="td">{{ UniEconomicas.id_Uni }}</td>
+            <td class="td">{{ UniEconomicas.Nombre_de_la_Unidad_Economica }}</td>
+            <td class="td">{{ UniEconomicas.Razon_social }}</td>
+            <td class="td">{{ UniEconomicas.Nombre_de_clase_de_la_actividad }}</td>
+            <td class="td">{{ UniEconomicas.Descripcion_estrato_personal_ocupado }}</td>
+            <td class="td">{{ UniEconomicas.Nombre_de_la_vialidad }}</td>
+            <td class="td">{{ UniEconomicas.Numero_exterior_o_kilometro }}</td>
+            <td class="td">{{ UniEconomicas.Letra_exterior }}</td>
+            <td class="td">{{ UniEconomicas.Nombre_de_asentamiento_humano }}</td>
+            <td class="td">{{ UniEconomicas.Codigo_postal }}</td>
+            <td class="td">{{ UniEconomicas.Entidad_federetiva }}</td>
+            <td class="td">{{ UniEconomicas.Municipio }}</td>
+            <td class="td">{{ UniEconomicas.Localidad }}</td>
+            <td class="td">{{ UniEconomicas.Numero_de_telefono }}</td>
+            <td class="td">{{ UniEconomicas.Correo_electronico }}</td>
+            <td class="td">{{ UniEconomicas.Sitio_en_Internet }}</td>
+            <td class="td">{{ UniEconomicas.Latitud }}</td>
+            <td class="td">{{ UniEconomicas.Longitud }}</td>
+            <td class="td">{{ UniEconomicas.Fecha_de_incorporacion_al_denue }}</td>
+            <td class="td">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                    </label>
+                  </div>
+            </td>                        
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <div class="mt-4 d-flex justify-content-end gap-2">
+        <button class="btn btn-danger" onclick="window.location.href='{% url 'crear_consulta' %}'">CANCELAR</button> 
+        <br>
+        <button class="btn btn-primary" >CONSULTAR</button>
+    </div>
+
+</div>
 
 
 {% endblock %}
