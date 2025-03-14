@@ -90,22 +90,32 @@ class Asesor(models.Model):
 
 #Table Unidades Economicas
 class UniEconomicas(models.Model):
-    nom_uniEc=models.CharField(max_length=250, verbose_name='Unidad económica')
-    clase_uniEc=models.CharField(max_length=250, verbose_name='Clase de la unidad económica')
-    codigoPos=models.CharField(max_length=5, verbose_name='Codigo postal')
-    direc_uniEc=models.CharField(max_length=250, verbose_name='Dirección')
-    tel_uniEc=models.CharField(max_length=20, verbose_name='Telefono', null=True)
-    correp_uniEc=models.CharField(max_length=100, verbose_name='Correo', null=True)
-    lat=models.CharField(max_length=50,verbose_name='Latitud')
-    long=models.CharField(max_length=50,verbose_name='Longitud')
-    status= models.CharField(max_length=2, choices=tipos, verbose_name='Status', default=0)
+    id_Uni=models.CharField(max_length=200, verbose_name="ID Unidades economicas", null=True)
+    CleeUni=models.CharField(max_length=100, verbose_name="Clee", null=True)
+    Nombre_de_la_Unidad_Economica=models.CharField(max_length=250, verbose_name="Nombre de la unidad Economica", null=True)
+    Razon_social=models.CharField(max_length=250, verbose_name="Razón social", null=True)
+    Nombre_de_clase_de_la_actividad=models.CharField(max_length=250, verbose_name="Nombre de la clase de la actividad", null=True)
+    Descripcion_estrato_personal_ocupado=models.CharField(max_length=300, verbose_name="Descripcion del estrato", null=True)
+    Nombre_de_la_vialidad=models.CharField(max_length=250,verbose_name="Nombre de la vialidad", null=True)
+    Numero_exterior_o_kilometro=models.CharField(max_length=20, verbose_name="Numero exterior", null=True)
+    Letra_exterior=models.CharField(max_length=200, verbose_name="Letra exterior", null=True)
+    Nombre_de_asentamiento_humano=models.CharField(max_length=250, verbose_name="Asentamiento humano", null=True)
+    Codigo_postal=models.CharField(max_length=6, verbose_name="Codigo postal", null=True)
+    Entidad_federetiva=models.CharField(max_length=250, verbose_name="Estado", null=True)
+    Municipio=models.CharField(max_length=250, verbose_name="Municipio", null=True)
+    Localidad=models.CharField(max_length=250, verbose_name="Localidad", null=True)
+    Numero_de_telefono=models.CharField(max_length=13, verbose_name="Telefono", null=True)
+    Correo_electronico=models.CharField(max_length=250, verbose_name="Correo", null=True)
+    Sitio_en_Internet=models.CharField(max_length=250,verbose_name="Sitio web", null=True)
+    Latitud=models.CharField(max_length=200, verbose_name="Latitud", null=True)
+    Longitud=models.CharField(max_length=200, verbose_name="Longitud", null=True)
+    Fecha_de_incorporacion_al_denue=models.CharField(max_length=20, verbose_name="Fecha de incorporación al denue", null=True)
+
+
     
 #Tabla Consultas
-nom_Cons=models.CharField(max_length=200, verbose_name='Consulta')
-fecha_Cons= models.DateField(verbose_name='Fecha', null= False)
-asesor=models.ForeignKey('Asesor', on_delete=models.CASCADE, verbose_name='Asesor')
-uniEc=models.ForeignKey('UniEconomicas', on_delete=models.CASCADE, verbose_name='Unidades Economicas')
-
-
-    
-    
+class Consulta(models.Model):
+    nom_Cons=models.CharField(max_length=200, verbose_name='Consulta')
+    fecha_Cons= models.DateField(verbose_name='Fecha', null= False)
+    asesor=models.ForeignKey('Asesor', on_delete=models.CASCADE, verbose_name='Asesor')
+    uniEc=models.ForeignKey('UniEconomicas', on_delete=models.CASCADE, verbose_name='Unidades Economicas')

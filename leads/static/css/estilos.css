@@ -11,11 +11,8 @@ body{
     align-items: center;
     text-align: center;
 }
-.ilus{
-    display: flex;
-    max-width: 500px;
-    margin-bottom: 10px;
-    text-align: center;
+.img-fluid{
+    max-width: auto;
 }
 
 /* PANTALLA INICIO */
@@ -52,31 +49,19 @@ body{
     justify-content: center;
 }
 
-/* PANTALLA FILTRADO ASESOR */
-.asesorF-container {
-    flex-grow: 1;
-    background: white;
-    border-radius: 25px;
-    padding: 40px;
-    margin: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    border: 3px solid #4a80d6;
-}
-
-
 /* PANTALLA ACCION */
 .accion_container1{
     flex-grow: 1;
     background-color: white;
-    border-radius: 25px;
+    border-radius: 30px;
     padding: 40px;
     margin: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    border: 3px solid #4a80d6;
 }
 .accion_container2 {
     display: flex;
-    gap: 20px; /* Espacio entre tarjetas */
+    justify-content: center;
+    gap: 40px; /* Espacio entre tarjetas */
 }
 
 .card_a {
@@ -84,7 +69,7 @@ body{
     color: white;
     text-align: center;
     padding: 20px;
-    width: 180px;
+    width: 300px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -93,19 +78,28 @@ body{
 }
 
 .iconac {
-    width: 30px; /* Ajusta el tamaño del icono */
+    width: 40px; /* Ajusta el tamaño del icono */
 }
 
 .btnconac {
     background-color: white;
     color: #2e5ab3;
     border: none;
-    padding: 8px 20px;
+    padding: 8px 70px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
+    
 }
 
-.card button:hover {
-    background-color: #d9d9d9;
+/* PANTALLA FILTRADO ASESOR */
+.gral-container {
+    flex-grow: 1;
+    background: white;
+    border-radius: 25px;
+    padding: 40px;
+    margin: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
+
+
