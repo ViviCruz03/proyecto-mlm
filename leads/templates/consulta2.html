@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block content %}
@@ -17,7 +16,9 @@
 
         </p>
     </div>
-    <table class="rwd-table">
+    
+    <div class="table-responsive">
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -44,6 +45,7 @@
         </thead>
         <tbody class="table-group-divider">
           <tr>
+            {% for UniEconomicas in unis %}
             <td class="td">{{ UniEconomicas.id_Uni }}</td>
             <td class="td">{{ UniEconomicas.Nombre_de_la_Unidad_Economica }}</td>
             <td class="td">{{ UniEconomicas.Razon_social }}</td>
@@ -69,10 +71,14 @@
                     <label class="form-check-label" for="flexCheckDefault">
                     </label>
                   </div>
-            </td>                        
+            </td>
           </tr>
+          {% endfor %}
         </tbody>
       </table>
+    </div>
+
+
       <br>
       <div class="mt-4 d-flex justify-content-end gap-2">
         <button class="btn btn-danger" onclick="window.location.href='{% url 'crear_consulta' %}'">CANCELAR</button> 

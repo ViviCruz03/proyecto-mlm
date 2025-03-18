@@ -107,4 +107,12 @@ body{
 }
 
 /* TABLA DE CONSULTA 2 */
-
+td {
+    word-wrap: break-word;
+    max-width: 200px; /* Ajusta el tamaño */
+    white-space: normal; /* Permite que el texto se divida */
+    max-width: 200px;  /* Ajusta el ancho máximo */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;  /* Evita que el texto se divida en varias líneas */
+}
