@@ -1,15 +1,12 @@
 from django.shortcuts import render, redirect
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import ListView
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-#Biblioteca de django que permite crear una coockie para la sesión del usuario
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate #Biblioteca de django que permite crear una coockie para la sesión del usuario
 from django.db import IntegrityError
 from .models import *  
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponse
 from django.http import JsonResponse
-
 
 
 
@@ -17,7 +14,7 @@ from django.http import JsonResponse
 def home (request):
     return render(request, 'index.html')
 
-#Funcion de inicio de sesión
+#Inicio de sesión
 def signin (request):
     if request.method == 'GET':
         return render(request, 'login.html',{
@@ -50,18 +47,28 @@ def accion(request):
 #Crear consultas a partir de estado, municipio y localidad
 @login_required
 def crearConsulta(request):
-    return render(request, 'consulta1.html',{'estados': Estado.ESTADOS})
+    return render(request, 'consulta1.html')
 
-
-#Vista para enlistar las unidades economicas
+#Enlista las unidades econónicas
 class UniEconomicaListView(ListView):
     model = UniEconomicas
     template_name = 'consulta2.html'
     context_object_name = 'unis'
 
-#Obtener las unidades desde la base de datos
+#Trae las unidades desde la base de datos
 def obtener_unidades(request):
-    unidades = UniEconomicas.objects.all().values('Nombre_de_la_Unidad_Economica', 'Descripcion_estrato_personal_ocupado', 'Numero_de_telefono')
+    unidades = UniEconomicas.objects.all().values(
+        'Nombre_de_la_Unidad_Economica',
+        'Nombre_de_clase_de_la_actividad', 
+        'Descripcion_estrato_personal_ocupado', 
+        'Nombre_de_la_vialidad', 
+        'Numero_exterior_o_kilometro', 
+        'Letra_exterior', 
+        'Codigo_postal',
+        'Latitud',
+        'Longitud',
+        'Fecha_de_incorporacion_al_denue'
+        )
     return JsonResponse({'unidades': list(unidades)})
 
 #Filtrar las condiciones de las unidades
@@ -91,7 +98,6 @@ def obtener_municipios(request):
         # print(f"Municipios encontrados: {municipios}")
         return JsonResponse({'municipios': list(municipios)})
     return JsonResponse({'municipios': []})
-
 
 #Devuelve localidades según el municipio seleccionado
 def obtener_localidades(request):
@@ -124,14 +130,26 @@ def consultar_datos(request):
         filtros['Localidad__icontains'] = localidad
 
     # Realizar la consulta con los filtros aplicados
-    resultados = UniEconomicas.objects.filter(**filtros).values('Nombre_de_la_Unidad_Economica', 'Descripcion_estrato_personal_ocupado', 'Numero_de_telefono')
+    resultados = UniEconomicas.objects.filter(**filtros).values(
+        'Nombre_de_la_Unidad_Economica',
+        'Nombre_de_clase_de_la_actividad', 
+        'Descripcion_estrato_personal_ocupado', 
+        'Nombre_de_la_vialidad', 
+        'Numero_exterior_o_kilometro', 
+        'Letra_exterior', 
+        'Codigo_postal',
+        'Latitud', 
+        'Longitud',
+        'Fecha_de_incorporacion_al_denue'
+        )
 
     # Convertir resultados a lista y devolver JSON
     return JsonResponse({'resultados': list(resultados)})
 
+#Pantalla a segundo tratado de unidades
 @login_required
 def consulta2(request):
-    return render(request, 'consulta2.html',{"UniEconomicas": UniEconomicas})
+    return render(request, 'consulta2.html')
 
 
 #Continuar el seguimiento de una consulta
@@ -139,7 +157,7 @@ def consulta2(request):
 def segConsulta(request):
     return render(request, 'seguimiento1.html')
 
-
+#Dashboard
 @login_required
 def dash(request):
     return render(request, 'dash.html')

@@ -1,9 +1,12 @@
-@import 'https://fonts.googleapis.com/css?family=Montserrat:300,400,700';
+/* @import 'https://fonts.googleapis.com/css?family=Montserrat:300,400,700'; */
 
 
-
+html,
 body{
     background-color: #77A2E8;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -116,3 +119,24 @@ td {
     text-overflow: ellipsis;
     white-space: nowrap;  /* Evita que el texto se divida en varias líneas */
 }
+
+.table td, .table th {
+    white-space: normal !important; /* Permitir que el texto se ajuste */
+    word-wrap: break-word; /* Romper palabras largas */
+    max-width: 300px; /* Opcional: limitar el ancho */
+  }.table td, .table th {
+    white-space: normal !important; /* Permitir que el texto se ajuste */
+    word-wrap: break-word; /* Romper palabras largas */
+    max-width: 300px; /* Opcional: limitar el ancho */
+  }
+
+
+  /* MAPAS */
+
+#map {
+    height: 100%;
+}
+  
+  /* 
+   * Optional: Makes the sample page fill the window. 
+   */

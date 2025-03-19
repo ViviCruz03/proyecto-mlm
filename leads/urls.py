@@ -1,10 +1,11 @@
 from django.urls import path, reverse
+from leads import views
 from .views import *
 
 
 urlpatterns = [
     path('', home, name='index'),
-    path('consulta2/', UniEconomicaListView.as_view(), name='uniEconomicas-list'),
+    # path('consulta2/', views.consulta2, name='consulta2'),
     path('obtener-unidades/', obtener_unidades, name='obtener-unidades'),
     path('obtener-condiciones/',obtener_condiciones, name='obtener-condiciones'),
     path('obtener-filtros/', obtener_filtros, name='obtener-filtros'),

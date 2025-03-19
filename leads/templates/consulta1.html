@@ -34,24 +34,38 @@
                 <option value="">Seleccionar localidad...</option>
             </select>
         </div>
+        <div class="mt-4 d-flex justify-content-end">
+            <br>
+            <button id="btnConsultar" class="btn btn-primary">BUSCAR</button>
+        </div>
     </div>
     <br><br><br>
-    <table class="table table-bordered" id="resultadosTable">
-        <thead>
-            <tr>
-                <th>Nombre o Razón Social</th>
-                <th>Dirección</th>
-                <th>Teléfono</th>
-            </tr>
-        </thead>
-        <tbody id="tablaResultados">
-            <!-- Aquí se insertarán los resultados -->
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="resultadosTable">
+            <thead class="table-primary">
+                <tr class="align-bottom">
+                    <th>Status</th>
+                    <th>Nombre de la Unidad</th>
+                    <th>Clase de actividad</th>
+                    <th>N° Personal</th>
+                    <th>Vialidad</th>
+                    <th>N° ext</th>
+                    <th>Letra</th>
+                    <th>C.P</th>
+                    <th>Latitud</th>
+                    <th>Longitud</th>
+                    <th>Fecha de registro</th>
+                </tr>
+            </thead>
+            <tbody id="tablaResultados">
+                <!-- Aquí se insertan los resultados -->
+            </tbody>
+        </table>
+    </div>
+    
     <br><br><br>
     <div class="mt-4 d-flex justify-content-end gap-2">
-        <button class="btn btn-danger" id="btnCancelar">CANCELAR</button><br>
-        <button class="btn btn-primary" id="btnConsultar">CONSULTAR</button>
+        <button class="btn btn-danger" id="btnCancelar">LIMPIAR</button><br>
         <button class="btn btn-success" id="btnSiguiente">SIGUIENTE</button>
     </div>
 </div>
@@ -143,23 +157,65 @@
 
     // Función para mostrar los resultados en una tabla
     function mostrarResultados(resultados) {
-        let tabla = document.getElementById("tablaResultados");
-        tabla.innerHTML = ""; // Limpiar resultados anteriores
+    let tabla = document.getElementById("tablaResultados");
+    tabla.innerHTML = ""; // Limpiar resultados anteriores
 
-        if (resultados.length === 0) {
-            tabla.innerHTML = "<tr><td colspan='3'>No se encontraron resultados</td></tr>";
-            return;
-        }
-
-        resultados.forEach(item => {
-            let fila = `<tr>
-            <td>${item.Nombre_de_la_Unidad_Economica}</td>
-            <td>${item.Descripcion_estrato_personal_ocupado}</td>
-            <td>${item.Numero_de_telefono || 'No disponible'}</td>
-        </tr>`;
-            tabla.innerHTML += fila;
-        });
+    if (resultados.length === 0) {
+        tabla.innerHTML = "<tr><td colspan='10'>No se encontraron resultados</td></tr>";
+        return;
     }
+
+    resultados.forEach(item => {
+        let fila = `<tr>
+            <td><input type="checkbox" class="seleccionarUnidad" value="${item.Status}"></td>
+            <td>${item.Nombre_de_la_Unidad_Economica}</td>
+            <td>${item.Nombre_de_clase_de_la_actividad}</td>
+            <td>${item.Descripcion_estrato_personal_ocupado}</td>
+            <td>${item.Nombre_de_la_vialidad}</td>
+            <td>${item.Numero_exterior_o_kilometro}</td>
+            <td>${item.Letra_exterior || 'No disponible'}</td>
+            <td>${item.Codigo_postal || 'No disponible'}</td>
+            <td>${item.Latitud}</td>
+            <td>${item.Longitud}</td>
+            <td>${item.Fecha_de_incorporacion_al_denue || 'No disponible'}</td>
+        </tr>`;
+        tabla.innerHTML += fila;
+    });
+    }
+
+    // Redireccionar al boton  siguiente
+    document.getElementById("btnSiguiente").addEventListener("click", function() {
+    let seleccionados = [];
+    document.querySelectorAll(".seleccionarUnidad:checked").forEach(checkbox => {
+        let fila = checkbox.closest("tr");
+        let unidad = {
+            Nombre: fila.cells[1].textContent,
+            Actividad: fila.cells[2].textContent,
+            Estrato: fila.cells[3].textContent,
+            Vialidad: fila.cells[4].textContent,
+            Numero: fila.cells[5].textContent,
+            Letra: fila.cells[6].textContent,
+            CP: fila.cells[7].textContent,
+            Latitud: fila.cells[8].textContent,
+            Longitud: fila.cells[9].textContent,
+            Fecha: fila.cells[10].textContent
+        };
+        seleccionados.push(unidad);
+    });
+
+    if (seleccionados.length === 0) {
+        alert("Por favor, selecciona al menos una unidad.");
+        return;
+    }
+
+    // Guardamos los datos seleccionados en localStorage para usarlos en seguimiento2.html
+    localStorage.setItem("seleccionados", JSON.stringify(seleccionados));
+
+    // Redireccionar a la siguiente página
+    window.location.href = "/consulta2/";
+    });
+
+    
 
     // Cancelar los campos de la busqueda
     document.addEventListener("DOMContentLoaded", function() {
@@ -179,11 +235,11 @@
         
         // Borrar los resultados mostrados
     const resultadosTable = document.getElementById("resultadosTable");
-    if (resultadosTable) {
+        if (resultadosTable) {
         resultadosTable.innerHTML = "";  // Borra el contenido de la tabla
-    }
+            }
+        });
     });
-});
 
 </script>
 
