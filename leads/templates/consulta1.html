@@ -186,6 +186,11 @@
     // Redireccionar al boton  siguiente
     document.getElementById("btnSiguiente").addEventListener("click", function() {
     let seleccionados = [];
+    let condicion= document.getElementById("condicion").value;
+    let estado = document.getElementById("estados").value;
+    let municipio=document.getElementById("municipio").value;
+    let localidad = document.getElementById("localidad").value;
+
     document.querySelectorAll(".seleccionarUnidad:checked").forEach(checkbox => {
         let fila = checkbox.closest("tr");
         let unidad = {
@@ -210,6 +215,10 @@
 
     // Guardamos los datos seleccionados en localStorage para usarlos en seguimiento2.html
     localStorage.setItem("seleccionados", JSON.stringify(seleccionados));
+    localStorage.setItem("condicion", condicion);
+    localStorage.setItem("estado", estado);
+    localStorage.setItem("municipio", municipio);
+    localStorage.setItem("localidad",localidad);
 
     // Redireccionar a la siguiente página
     window.location.href = "/consulta2/";

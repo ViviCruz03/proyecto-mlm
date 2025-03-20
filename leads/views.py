@@ -146,7 +146,7 @@ def consultar_datos(request):
     # Convertir resultados a lista y devolver JSON
     return JsonResponse({'resultados': list(resultados)})
 
-#Pantalla a segundo tratado de unidades
+
 @login_required
 def consulta2(request):
     return render(request, 'consulta2.html')
