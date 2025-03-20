@@ -14,6 +14,8 @@
     
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
 
+    
+
     <!-- Chart -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
 
@@ -32,7 +34,10 @@
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/accion">Home</a>
+                        <a class="nav-link" href="/accion">Seleccionar acción</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/verAsesor">Asesores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/salir">Salir</a>
