@@ -65,7 +65,7 @@ class Empresa(models.Model):
 class Sucursal(models.Model):
     nombreSuc = models.CharField(max_length=200, verbose_name='Sucursal')
     direccionSuc = models.CharField(max_length=250, verbose_name='Dirección de la sucursal')
-    empresa = models.ForeignKey('Empresa', on_delete=models.CASCADE, verbose_name='Empresa')
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, verbose_name='Empresa')
 
     def __str__(self):
         return '%s, %s, %s' %(self.nombreSuc, self.direccionSuc, self.empresa)
@@ -74,7 +74,7 @@ class Sucursal(models.Model):
 #Table Supervisor
 class Supervisor(models.Model):
     nomSuper= models.CharField(max_length=250, verbose_name='Supervisor')
-    sucursal= models.ForeignKey('Sucursal', on_delete=models.CASCADE, verbose_name='Sucursal')
+    sucursal= models.ForeignKey(Sucursal, on_delete=models.CASCADE, verbose_name='Sucursal')
 
     def __str__(self):
         return '%s' %(self.nomSuper)
@@ -83,7 +83,7 @@ class Supervisor(models.Model):
 class Asesor(models.Model):
     nomAses= models.CharField(max_length=250, verbose_name="Asesor")
     rutaAses=models.CharField(max_length=250, verbose_name='Ruta')
-    supervisor=models.ForeignKey('Supervisor', on_delete=models.CASCADE, verbose_name='Supervisor')
+    supervisor=models.ForeignKey(Supervisor, on_delete=models.CASCADE, verbose_name='Supervisor')
 
     def __str__(self):
         return '%s, %s' %(self.nomAses, self.rutaAses)
@@ -110,12 +110,12 @@ class UniEconomicas(models.Model):
     Latitud=models.CharField(max_length=200, verbose_name="Latitud", null=True)
     Longitud=models.CharField(max_length=200, verbose_name="Longitud", null=True)
     Fecha_de_incorporacion_al_denue=models.CharField(max_length=20, verbose_name="Fecha de incorporación al denue", null=True)
-
+    asesor = models.ForeignKey(Asesor, on_delete=models.CASCADE, verbose_name="Asesor", null=True, blank=True)
 
     
 #Tabla Consultas
 class Consulta(models.Model):
     nom_Cons=models.CharField(max_length=200, verbose_name='Consulta')
     fecha_Cons= models.DateField(verbose_name='Fecha', null= False)
-    asesor=models.ForeignKey('Asesor', on_delete=models.CASCADE, verbose_name='Asesor')
-    uniEc=models.ForeignKey('UniEconomicas', on_delete=models.CASCADE, verbose_name='Unidades Economicas')
+    asesor=models.ForeignKey(Asesor, on_delete=models.CASCADE, verbose_name='Asesor')
+    uniEc=models.ForeignKey(UniEconomicas, on_delete=models.CASCADE, verbose_name='Unidades Economicas')

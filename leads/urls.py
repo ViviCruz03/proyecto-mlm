@@ -11,5 +11,8 @@ urlpatterns = [
     path('obtener-filtros/', obtener_filtros, name='obtener-filtros'),
     path('obtener-municipios/', obtener_municipios, name='obtener_municipios'),
     path('obtener-localidades/', obtener_localidades, name='obtener_localidades'),
-    path('consultar-datos/', consultar_datos, name='consultar_datos')
+    path('consultar-datos/', consultar_datos, name='consultar_datos'),
+    path('obtener-asesores/', views.obtener_asesores, name='obtener_asesores'),
+    path('obtener-asesores/', obtener_asesores, name='obtener_asesores'),
+    path('asignar-asesor/', views.asignar_asesor, name='asignar_asesor'),
 ]
