@@ -31,7 +31,7 @@ def signin (request):
         })
         else:
             login(request, user)
-            return redirect('accion')
+            return redirect('accionSup')
 
 #Salir de sesión
 @login_required        
@@ -39,14 +39,17 @@ def salir(request):
     logout(request)
     return redirect('index')
 
-#Redirigir a la pantalla acción       
+
+#------------ SUPERVISOR----------------------------------
+
+#Redirigir a la pantalla acción del supervisor     
 @login_required
-def accion(request):
-    return render(request, 'accion.html')
+def accionSup(request):
+    return render(request, 'accionSup.html')
 
 #Crear consultas a partir de estado, municipio y localidad
 @login_required
-def crearConsulta(request):
+def consulta1(request):
     return render(request, 'consulta1.html')
 
 #Enlista las unidades econónicas
@@ -146,7 +149,7 @@ def consultar_datos(request):
     # Convertir resultados a lista y devolver JSON
     return JsonResponse({'resultados': list(resultados)})
 
-#Vista a consulta2 (asignar asesores a unidades)
+#Vista a Asignar asesores a unidades desde el supervisor
 @login_required
 def consulta2(request):
     return render(request, 'consulta2.html')
@@ -173,7 +176,6 @@ def obtener_unidades_por_asesor(request):
     
     except Asesor.DoesNotExist:
         return JsonResponse({'error': 'Asesor no encontrado'}, status=404)
-
 
 #Obtener los asesores
 def obtener_asesores(request):
@@ -208,13 +210,30 @@ def asignar_asesor(request):
 
     return JsonResponse({'success': False, 'error': 'Método no permitido'}, status=405)
 
+#----VER ASESORES----
 #Vista a verAsesor
 @login_required
 def verAsesor(request):
     return render(request, 'verAsesor.html')
 
+#---- DASHBOARD SUP
+@login_required
+def dashSup(request):
+    return render(request, 'dashSup.html')
 
 
+
+
+#------------------ASESORES --------------------------------
+@login_required
+def accionAs(request):
+    return render(request, 'accionAs.html')
+
+def segAs1(request):
+    return render(request, 'seguimientoAs1.html')
+
+def dashAses(request):
+    return render(request, 'dashAses.html')
 
 
 
@@ -236,9 +255,6 @@ def verAsesor(request):
 def segConsulta(request):
     return render(request, 'seguimiento1.html')
 
-#Dashboard
-@login_required
-def dash(request):
-    return render(request, 'dash.html')
+
 
 

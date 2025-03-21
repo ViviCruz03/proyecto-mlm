@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<!-- ESTA VISTA DE ACCION ES SOLO PARA EL USUARIO SUPERVISOR -->
+
 {% block content %}
 <div class="accion_container1 ">
     <div class="d-flex justify-content-between align-items-center">
-        <h3>ASESOR: <b>{{ user.get_username }}</b> </h3>
+        <h3>Hola de nuevo: <b>{{ user.get_username }}</b> </h3>
         <img src="{% static 'img/Logo-1.png' %}" alt="Mappit Logo" width="100">
     </div>
     <br><br>
-
     <div class="accion_container2">
         <div class="card_a py-4">
-            <p><b>CREAR CONSULTA</b></p>
+            <p><b>ASIGNAR LEADS</b></p>
             <img src="{% static 'img/icono1.png' %}" alt="Crear consulta" class="iconac">
-            <button class="btnconac" onclick="window.location.href='{% url 'crear_consulta' %}'">Ir</button>
+            <button class="btnconac" onclick="window.location.href='{% url 'consulta1' %}'">Ir</button>
         </div>
         <div class="card_a py-4">
             <p><b>SEGUIMIENTO </b></p>
@@ -23,9 +24,10 @@
         <div class="card_a py-4">
             <p><b>DASHBOARD</b></p>
             <img src="{% static 'img/icono3.png' %}" alt="Dashboard" class="iconac">
-            <button class="btnconac" onclick="window.location.href='{% url 'dash' %}'">Ir</button>
+            <button class="btnconac" onclick="window.location.href='{% url 'dashSup' %}'">Ir</button>
         </div>
     </div>
+
     <br><br><br>
 </div>
 {% endblock %}

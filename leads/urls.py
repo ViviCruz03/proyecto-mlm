@@ -6,6 +6,7 @@ from .views import *
 urlpatterns = [
     path('', home, name='index'),
     # path('consulta2/', views.consulta2, name='consulta2'),
+    # ------------ SUPERVISORES -----------------
     path('obtener-unidades/', obtener_unidades, name='obtener-unidades'),
     path('obtener-condiciones/',obtener_condiciones, name='obtener-condiciones'),
     path('obtener-filtros/', obtener_filtros, name='obtener-filtros'),
@@ -16,4 +17,9 @@ urlpatterns = [
     path('obtener-asesores/', obtener_asesores, name='obtener_asesores'),
     path('asignar-asesor/', views.asignar_asesor, name='asignar_asesor'),
     path('obtener_unidades_por_asesor/',obtener_unidades_por_asesor, name='obtener_unidades_por_asesor')
+
+
+    # ---------ASESORES----------------
+
+    
 ]

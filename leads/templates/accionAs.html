@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- ESTA VISTA DE ACCION ES SOLO PARA EL USUARIO ASESOR -->
+
+{% block content %}
+<div class="accion_container1 ">
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>Hola de nuevo: <b>{{ user.get_username }}</b> </h3>
+        <img src="{% static 'img/Logo-1.png' %}" alt="Mappit Logo" width="100">
+    </div>
+    <br><br>
+    <div class="accion_container2">
+        <div class="card_a py-4">
+            <p><b>SEGUIMIENTO DE LEADS</b></p>
+            <img src="{% static 'img/icono2.png' %}" alt="Seguimiento de consulta" class="iconac">
+            <button class="btnconac" onclick="window.location.href='{% url 'segAs1' %}'">Ir</button>
+        </div>
+        <div class="card_a py-4">
+            <p><b>DASHBOARD</b></p>
+            <img src="{% static 'img/icono3.png' %}" alt="Dashboard" class="iconac">
+            <button class="btnconac" onclick="window.location.href='{% url 'dashAses' %}'">Ir</button>
+        </div>
+    </div>
+
+    <br><br><br>
+</div>
+{% endblock %}

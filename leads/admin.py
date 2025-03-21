@@ -50,7 +50,7 @@ class UniEconomicasAdmin(ImportExportMixin, admin.ModelAdmin):
     list_per_page=10
 
 class ConsultaAdmin(ImportExportMixin, admin.ModelAdmin):
-    list_display=['nom_Cons','fecha_Cons','asesor','uniEc']
+    list_display=['nom_Cons','fecha_Cons','uniEc']
     search_fields=['nomCons']
     list_per_page=10
 

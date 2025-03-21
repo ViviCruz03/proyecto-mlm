@@ -21,15 +21,23 @@ from leads import views
 
 urlpatterns = [
     path('', include('leads.urls')),
+
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('login/', views.signin, name='login'),
     path('salir/', views.salir, name='salir'),
-    path('accion/', views.accion, name='accion'),
-    path('crearConsulta/',views.crearConsulta, name='crear_consulta'),
+
+    # ------- SUPERVISORES --------------
+    path('accionSup/', views.accionSup, name='accionSup'),
+    path('consulta1/',views.consulta1, name='consulta1'),
     path('consulta2/', views.consulta2,name='consulta2'),
+    path('verAsesor/', views.verAsesor, name='verAsesor'),
     path('segConsulta/',views.segConsulta, name='seg_consulta' ),
-    path('dash/', views.dash, name='dash'),
-    path('verAsesor/', views.verAsesor, name='verAsesor')
+    path('dashSup/', views.dashSup, name='dashSup'),
+
+    #-----------ASESORES --------------
+    path('accionAs/',views.accionAs, name='accionAs'),
+    path('segAs1/',views.segAs1, name='segAs1'),
+    path('dashAses/',views.dashAses, name='dashAses')
     ]

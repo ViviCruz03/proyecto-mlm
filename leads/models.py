@@ -110,12 +110,12 @@ class UniEconomicas(models.Model):
     Latitud=models.CharField(max_length=200, verbose_name="Latitud", null=True)
     Longitud=models.CharField(max_length=200, verbose_name="Longitud", null=True)
     Fecha_de_incorporacion_al_denue=models.CharField(max_length=20, verbose_name="Fecha de incorporación al denue", null=True)
-    asesor = models.ForeignKey(Asesor, on_delete=models.CASCADE, verbose_name="Asesor", null=True, blank=True)
+    asesor = models.ForeignKey(Asesor, on_delete=models.CASCADE, verbose_name="Asesor", null=True, blank=True),
 
     
 #Tabla Consultas
 class Consulta(models.Model):
     nom_Cons=models.CharField(max_length=200, verbose_name='Consulta')
     fecha_Cons= models.DateField(verbose_name='Fecha', null= False)
-    asesor=models.ForeignKey(Asesor, on_delete=models.CASCADE, verbose_name='Asesor')
+    # asesor=models.ForeignKey(Asesor, on_delete=models.CASCADE, verbose_name='Asesor')
     uniEc=models.ForeignKey(UniEconomicas, on_delete=models.CASCADE, verbose_name='Unidades Economicas')
