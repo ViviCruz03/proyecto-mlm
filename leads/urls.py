@@ -15,4 +15,5 @@ urlpatterns = [
     path('obtener-asesores/', views.obtener_asesores, name='obtener_asesores'),
     path('obtener-asesores/', obtener_asesores, name='obtener_asesores'),
     path('asignar-asesor/', views.asignar_asesor, name='asignar_asesor'),
+    path('obtener_unidades_por_asesor/',obtener_unidades_por_asesor, name='obtener_unidades_por_asesor')
 ]

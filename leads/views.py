@@ -151,10 +151,28 @@ def consultar_datos(request):
 def consulta2(request):
     return render(request, 'consulta2.html')
 
-#------------------------------------------------
+# Obtener unidades económicas asignadas a un asesor
+def obtener_unidades_por_asesor(request):
+    asesor_id = request.GET.get('asesor_id')
 
+    if not asesor_id:
+        return JsonResponse({'error': 'No se proporcionó un asesor'}, status=400)
 
-#Función para listar los asesores y sus unidades economicas
+    try:
+        asesor = Asesor.objects.get(id=asesor_id)
+        unidades = UniEconomicas.objects.filter(asesor=asesor).values(
+            'Nombre_de_la_Unidad_Economica',
+            'Entidad_federetiva',
+            'Municipio',
+            'Localidad',
+            'Latitud',
+            'Longitud',
+            # 'Status'
+        )
+        return JsonResponse({'unidades': list(unidades)})
+    
+    except Asesor.DoesNotExist:
+        return JsonResponse({'error': 'Asesor no encontrado'}, status=404)
 
 
 #Obtener los asesores
